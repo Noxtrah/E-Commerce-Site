@@ -1,0 +1,184 @@
+body{
+    margin:0;
+    padding: 0;
+}
+
+.nav-bar{
+    margin-inline: 10vw;
+    display: flex;
+}
+
+.brand{
+    width: 205px;
+    position: relative;
+}
+
+.brand-title{
+    position: relative;
+    color: #ff6000;
+    font-size: 35px;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+}
+
+.brand-link{
+    text-decoration: none;
+    position: relative;
+    color: #ff6000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size:14px;
+}
+
+.brand-link-2 {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.brand-bottom{
+    position: absolute;
+    right:0;
+}
+
+.searchbar-container{
+    width: 400px;
+    height: 45px;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top:10px;
+    border: solid 2px #919191;
+    border-radius:4px;
+    cursor: text;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+    position: relative;
+}
+
+.magnifier-icon {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 20 20%27 stroke=%27none%27 fill=%27%23ccc%27%3E %3Cpath fill-rule=%27nonzero%27 d=%27M14.653 13.165l5.039 5.038a1.053 1.053 0 1 1-1.489 1.489l-5.038-5.038a8.12 8.12 0 1 1 1.488-1.489zm-4.086.585A6.014 6.014 0 1 0 5.863 2.68a6.014 6.014 0 0 0 4.704 11.07z%27/%3E %3C/svg%3E") no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left:15px;
+}
+
+.search-input{
+    width: 240px;
+    height: 43px;
+    border: none;
+    outline: none;
+    margin-left: 15px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.search-input::placeholder {
+    color: #bab9b9;
+    /* Change the color of the placeholder text */
+}
+
+.searchbar-container:focus-within {
+    border-color: #ff6000;
+}
+
+.search-button{
+    position: absolute;
+    right:0;
+    height:45px;
+    width: 60px;
+    background-color: #919191;
+    border: solid 2px #919191;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.searchbar-container:focus-within .search-button{
+    background-color: #ff6000;
+    border: solid 2px #ff6000;
+}
+
+.location-container{
+    margin: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.location-image{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+}
+
+.location-text-container{
+    /* display: flex;
+    flex-direction: column; */
+    position: absolute;
+    margin-left: 30px;
+    width: 160px;
+}
+
+.location-span{
+    vertical-align: top;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.location-down-arrow{
+    vertical-align: middle;
+    height:8px;
+    width: 8px;
+}
+
+.location-selector{
+    margin-top: -2px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color:#ff6000;
+}
+
+.colorful-band {
+    display: flex;
+    flex-direction: row;
+    height: 8px;
+    margin-top:10px;
+}
+
+.color-1{
+    width: 40%;
+    background: #ff6000;
+}
+
+.color-2{
+    width: 15%;
+    background: #49C7ED;
+}
+
+.color-3{
+    width: 15%;
+    background: #7723DB;
+}
+
+.color-4{
+    width: 15%;
+    background: #57B900;
+}
+
+.color-5{
+    width: 15%;
+    background: #5D196A;
+}
