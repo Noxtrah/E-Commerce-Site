@@ -201,7 +201,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     height: 56px;
+    /* width: 100px; */
+    padding-inline: 10px;
     cursor: default;
     color: #646464;
     font-size: 14px;
@@ -211,13 +214,11 @@ body{
 
 .navbar-section-gap{
     content: "";
-    left: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    display: flex;
+    transform: translateY(+70%);
     display: block;
     width: 1px;
     height: 24px;
-    /* background-color: #e5e5e5; */
     background-color: #e5e5e5;
 }

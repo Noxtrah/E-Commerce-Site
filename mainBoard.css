@@ -1,0 +1,168 @@
+.hero-container{
+    height: 600px;
+    width: 100%;
+    position: relative;
+    /* background-color: #fff; */
+    overflow: hidden;
+    
+}
+
+.slider{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: darkorange;
+    background-image: linear-gradient(to right, rgba(252, 252, 10, 0.712), darkorange);
+}
+
+.slider-buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 18px;
+    padding-bottom: 13px;
+    height: 40px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    gap: 30px;
+    font-family: -apple-system,BlinkMacSystemFont,Arial,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif!important;
+}
+
+.slider-buttons{
+    zoom: 1;
+    background-color: transparent;
+    color: white;
+    border: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease 0s;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    /* box-shadow: 0 2px 4px #00000014; */
+}
+
+.slider-buttons.active {
+    background-color: #fff; /* Example background color for active button */
+    border-radius: 20px; /* Adjust as needed */
+    padding: 10px 15px; /* Adjust as needed */
+    color: black;
+}
+
+/* Styling for the talk bubble */
+.slider-buttons.active:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent; /* Adjust size as needed */
+    border-right: 10px solid transparent; /* Adjust size as needed */
+    border-bottom: 10px solid #fff; /* Example color for the talk bubble */
+    top: -8px; /* Adjust position as needed */
+    left: calc(50% - 10px); /* Adjust position as needed */
+}
+
+/* .slider-campaigns{
+    width: 100vw;
+    height: 40vh;
+} */
+
+.slider-campaign-1{
+    box-shadow: 0 6px 26px #00000029;
+    background-color: #fff;
+    border-radius: 8.1px;
+    zoom: 1;
+    /* max-width: 1088px; */
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(+20%) ;
+    width: 1100px;
+    height: 400px;
+}
+
+.share-button{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2718%27 height=%2724%27 viewBox=%270 0 18 24%27 stroke=%27none%27 fill=%27none%27%3E %3Cg fill=%27none%27 fill-rule=%27evenodd%27 stroke=%27%23484848%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27%3E %3Cpath d=%27M14.25 8.25h1.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H2.25a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h1.5M9 .75v10.5M5.25 4.5L9 .75l3.75 3.75%27/%3E %3C/g%3E %3C/svg%3E");
+    width: 24px;
+    height: 30px;
+    background-color: transparent;
+    border-color: transparent;
+    margin-left: 380px;
+    margin-top: 20px;
+}
+
+.slider-campaign-1-info{
+    padding: 106px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: absolute;
+    font-size: 30px;
+}
+
+.slider-campaign-info-button-1{
+    position: absolute;
+    top: 60%;
+    left: 4%;
+    background-color: rgb(255, 96, 0);
+    border-color:rgb(255, 96, 0);
+    border-radius: 24px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.14;
+    margin: 0 auto;
+    padding: 12px 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 300px;
+    white-space: nowrap;
+}
+
+.slider-campaign-1-img{
+    position: absolute;
+    display: block;
+    height: 98%;
+    width: 660px;
+    min-width: 660px;
+    background-image: url("https://images.hepsiburada.net/banners/s/1/1344-756/bannerImage2098_20240405182552.png/format:webp");
+    /* background-repeat: no-repeat; */
+    background-size: contain;
+    margin-left: 39.5%;
+    top: 3px;
+    border-radius: 8.1px;
+}
+
+.slider-campaign-options{
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    flex-direction: row;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+}
+
+.slider-campaign-option-1{
+    opacity: .72;
+    display: flex;
+    justify-content: center;
+    width: 56px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 2px #fff;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    position: absolute;
+    right: 100%;
+    transition: all .4s ease 0s;
+    overflow: hidden;
+    cursor: pointer;
+}
