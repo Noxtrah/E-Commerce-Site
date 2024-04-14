@@ -38,7 +38,7 @@
     position: relative;
     cursor: pointer;
     transition: all .2s ease 0s;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: block;
     white-space: nowrap;
     font-size: 14px;
@@ -60,17 +60,17 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent; /* Adjust size as needed */
-    border-right: 10px solid transparent; /* Adjust size as needed */
-    border-bottom: 10px solid #fff; /* Example color for the talk bubble */
-    top: -8px; /* Adjust position as needed */
-    left: calc(50% - 10px); /* Adjust position as needed */
+    border-left: 5px solid transparent; /* Adjust size as needed */
+    border-right: 5px solid transparent; /* Adjust size as needed */
+    border-top: 5px solid #fff; /* Example color for the talk bubble */
+    bottom: -5px; /* Adjust position as needed */
+    left: calc(50% - 5px); /* Adjust position as needed */
 }
 
-/* .slider-campaigns{
+.slider-campaigns{
     width: 100vw;
-    height: 40vh;
-} */
+    height: 86%;
+}
 
 .slider-campaign-1{
     box-shadow: 0 6px 26px #00000029;
@@ -145,14 +145,20 @@
     flex: 0 0 auto;
     width: 100%;
     flex-direction: row;
-    padding-left: 16px;
-    padding-right: 16px;
     position: relative;
+    justify-content: center;
+    gap: 1vw;
 }
 
-.slider-campaign-option-1{
-    opacity: .72;
-    display: flex;
+.slider-arrow-button{
+    position: relative;
+    /* left: 20%; */
+    position: relative;
+    display: block;
+    background-color: transparent;
+    transition-duration: .2s;
+    transition-property: opacity,background-color,color;
+    transition-timing-function: ease-out;
     justify-content: center;
     width: 56px;
     height: 36px;
@@ -160,9 +166,138 @@
     border: solid 2px #fff;
     margin-top: 6px;
     margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.slider-arrow-icon{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2717%27 height=%2716%27 viewBox=%270 0 17 16%27 stroke=%27%23fff%27 fill=%27none%27%3E %3Cg fill=%27none%27 fill-rule=%27evenodd%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27%3E %3Cpath d=%27M15.531 8H1.47M8.031 14.682L1.47 8 8.03 1.318%27/%3E %3C/g%3E %3C/svg%3E");
+    width: 15px;
+    height: 14px;
     position: absolute;
-    right: 100%;
-    transition: all .4s ease 0s;
-    overflow: hidden;
+    left: 35%;
+    top: 30%;
+}
+
+.slider-arrow-button-campaigns{
+    position: relative;
+    /* left: 20%; */
+    position: relative;
+    display: block;
+    background-color: transparent;
+    transition-duration: .2s;
+    transition-property: opacity,background-color,color;
+    transition-timing-function: ease-out;
+    justify-content: center;
+    min-width: 200px;
+    height: 36px;
+    border-radius: 18px;
+    border: solid 2px #fff;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.slider-arrow-icon-campaigns{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2717%27 height=%2716%27 viewBox=%270 0 17 16%27 stroke=%27%23fff%27 fill=%27none%27%3E %3Cg fill=%27none%27 fill-rule=%27evenodd%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27%3E %3Cpath d=%27M1.469 8H15.53M8.969 14.682L15.53 8 8.97 1.318%27/%3E %3C/g%3E %3C/svg%3E");    width: 15px;
+    height: 14px;
+    position: absolute;
+    right: 18%;
+    top: 30%;
+}
+
+.slider-arrow-span-campaigns{
+    width: 15px;
+    height: 14px;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+    padding-right: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.slider-campaign-option-1{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://images.hepsiburada.net/banners/s/1/1344-756/bannerImage2098_20240405182552.png/format:webp");
+    width: 71px;
+    height: 40px;
+    top: 10%;
+    position: relative;
+    border-radius: 10px;
+    border: transparent;
+}
+
+.slider-campaign-option-2{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2079_20240406112637.jpeg/format:webp");
+    width: 71px;
+    height: 40px;
+    top: 10%;
+    position: relative;
+    border-radius: 10px;
+}
+
+.slider-campaign-option-3{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2135_20240404124318.jpeg/format:webp");
+    width: 71px;
+    height: 40px;
+    top: 10%;
+    position: relative;
+    border-radius: 10px;
+}
+
+.slider-campaign-option-4{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2087_20240405192836.jpeg/format:webp");
+    width: 71px;
+    height: 40px;
+    top: 10%;
+    position: relative;
+    border-radius: 10px;
+}
+
+.slider-campaign-option-5{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://images.hepsiburada.net/banners/s/0/142-80/thumbnailImage2129_20210910183338.jpeg/format:webp");
+    width: 71px;
+    height: 40px;
+    top: 10%;
+    position: relative;
+    border-radius: 10px;
+}
+
+.active-slider{
+    border: 2px solid white;
+    top : 0%;
+}
+
+.slider-bottom-buttons{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    border: transparent;
+    background-color: transparent;
     cursor: pointer;
 }
