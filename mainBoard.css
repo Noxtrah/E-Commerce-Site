@@ -4,7 +4,6 @@
     position: relative;
     /* background-color: #fff; */
     overflow: hidden;
-    
 }
 
 .slider{
@@ -97,6 +96,7 @@
     border-color: transparent;
     margin-left: 380px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .slider-campaign-1-info{
@@ -124,6 +124,7 @@
     overflow: hidden;
     max-width: 300px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .slider-campaign-1-img{
@@ -255,7 +256,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2135_20240404124318.jpeg/format:webp");
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2101_20240405183445.jpeg/format:webp");
     width: 71px;
     height: 40px;
     top: 10%;
@@ -267,7 +268,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2087_20240405192836.jpeg/format:webp");
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2090_20240406121005.jpeg/format:webp");
     width: 71px;
     height: 40px;
     top: 10%;
@@ -279,7 +280,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-image: url("https://images.hepsiburada.net/banners/s/0/142-80/thumbnailImage2129_20210910183338.jpeg/format:webp");
+    background-image: url("https://images.hepsiburada.net/banners/s/1/142-80/thumbnailImage2150_20240313104622.jpeg/format:webp");
     width: 71px;
     height: 40px;
     top: 10%;

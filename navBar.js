@@ -14,3 +14,18 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.open("GET", "navBar.html", true);
     xhr.send();
 });
+
+function createSearchBoxOnClick(){
+    const searchBar = document.querySelector('searchbar');
+    searchBar.addEventListener('click', function() {
+        createSearchBox();
+    });
+}
+
+function createSearchBox(){
+    var searchBox = document.createElement('div');
+    searchBox.classList.add('search-box');
+    // searchBox.style.border = '2px solid #ff6000';
+}
+
+createSearchBoxOnClick();

@@ -108,6 +108,12 @@ body{
     border: solid 2px #ff6000;
 }
 
+.search-box{
+    height: 500px;
+    width: 500px;
+    border: solid 2px #ff6000;
+}
+
 .location-container{
     margin: 20px;
     position: relative;
