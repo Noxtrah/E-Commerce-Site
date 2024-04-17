@@ -109,9 +109,15 @@ body{
 }
 
 .search-box{
-    height: 500px;
-    width: 500px;
-    border: solid 2px #ff6000;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -2px;
+    border: 2px solid #ff6000;
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    z-index: 2;
+    min-width: calc(100% + 4px);
 }
 
 .location-container{
