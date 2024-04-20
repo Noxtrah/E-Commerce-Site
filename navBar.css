@@ -118,6 +118,14 @@ body{
     border-radius: 0 0 4px 4px;
     z-index: 2;
     min-width: calc(100% + 4px);
+    padding: 8px 16px;
+}
+
+.search-box-first-label{
+    color: #9b9b9b;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 8px 16px;
 }
 
 .location-container{
@@ -233,4 +241,12 @@ body{
     width: 1px;
     height: 24px;
     background-color: #e5e5e5;
+}
+
+.filtered-tags{
+    list-style: none;
+    font-size: large;
+    line-height: 1.5em;
+    color: rgb(62, 62, 62);
+    cursor: pointer;
 }

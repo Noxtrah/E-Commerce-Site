@@ -31,8 +31,17 @@ document.addEventListener("DOMContentLoaded", function() {
 function createSearchBox(){
     var searchBox = document.createElement('div');
     searchBox.classList.add('search-box');
+
+    var searchBoxFirstLabel = document.createElement('div');
+    searchBoxFirstLabel.classList.add('search-box-first-label');
+    searchBoxFirstLabel.innerHTML = 'Aramaya başlamak için <b>en az 2 karakter</b> yazmalısınız.';
+    searchBox.appendChild(searchBoxFirstLabel);
+
     const searchbarContainer = document.querySelector('.searchbar-container');
     searchbarContainer.appendChild(searchBox);
+
+    const searchInput = document.querySelector('.search-input');
+    searchInput.addEventListener('input', searchBarSuggestions);
 }
 
 function removeSearchBox() {
@@ -58,4 +67,41 @@ function toggleSearchBox() {
             searchBox.style.display = 'none';
         }
     }
+}
+
+function searchBarSuggestions(){
+    const searchInput = document.querySelector('.search-input');
+    const inputValue = searchInput.value.trim().toLowerCase();
+    const searchBoxFirstLabel = document.querySelector('.search-box-first-label');
+
+    // Check if the length of the input value is less than 2
+    if (inputValue.length < 2) {
+        // Clear previous suggestions
+        searchBoxFirstLabel.innerHTML = 'Aramaya başlamak için <b>en az 2 karakter</b> yazmalısınız.';
+        return; // Exit the function early
+    }
+
+    var tags = ["Elektronik","Moda","Ev, Yaşam, Kırtasiye, Ofis","Oto, Bahçe, Yapı, Market","Anne, Bebek, Oyuncak","Spor, Outdoor","Kozmetik, Kişisel Bakım","Süpermarket, Pet Shop", "Kitap, Film, Müzik, Hobi"];
+
+    // Clear previous suggestions
+    searchBoxFirstLabel.innerHTML = '';
+
+    // Filter tags array based on input value
+    const filteredTags = tags.filter(tag => tag.toLowerCase().includes(inputValue));
+
+    // Create li elements for filtered tags
+    filteredTags.forEach(tag => {
+        const li = document.createElement('li');
+        li.classList.add('filtered-tags');
+        li.textContent = tag;
+
+        // Add click event listener to each li element
+        li.addEventListener('click', function() {
+            // Perform action when li element is clicked
+            searchInput.value = tag; // Set the value of the input to the clicked tag
+            // Optionally, you can submit a form or trigger a search function here
+        });
+
+        searchBoxFirstLabel.appendChild(li);
+    });
 }
