@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="searchResultPage.css">
     <title>Search Results</title>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
+    <div class="container">
+        <div class="filter">
+            <div class="category-header">Kategori
+                <div class="all-categories-header">Tüm Kategoriler
+                    <li class="categories">Elektronik</li>
+                    <li class="categories">Moda</li>
+                    <li class="categories">Ev / Yaşam / Kırtasiye / Ofis</li>
+                    <li class="categories">Oto / Bahçe / Yapı Market</li>
+                    <li class="categories">Anne / Bebek / Oyuncak</li>
+                    <li class="categories">Spor / Outdoor</li>
+                    <li class="categories">Kozmetik / Kişisel Bakım</li>
+                    <li class="categories">Süpermarket / Pet Shop</li>
+                    <li class="categories">Kitap / Müzik / Film / Hobi</li>
+                </div>
+            </div>
+            <!-- <input type="text" id="filterInput" placeholder="Filter..."> -->
+        </div>
+        <div class="grid-container" id="gridContainer">
+            <!-- Grid items will be added here dynamically -->
+        </div>
+    </div>
 </body>
 <script src="navBar.js"></script>
 <script src="searchResultPage.js"></script>
