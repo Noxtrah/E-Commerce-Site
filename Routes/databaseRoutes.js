@@ -1,8 +1,8 @@
 // routes/databaseRoutes.js
-const express = require('express');
-const router = express.Router();
-const databaseController = require('../Controllers/databaseController');
+import { Router } from 'express';
+const router = Router();
+import { getAllItems } from '../Controllers/databaseController';
 
-router.get('/records', databaseController.getAllRecords);
+router.get('/items', getAllItems);
 
-module.exports = router;
+export default router;

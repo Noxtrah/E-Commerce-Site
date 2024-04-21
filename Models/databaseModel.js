@@ -1,18 +1,18 @@
 // models/databaseModel.js
-const sql = require('mssql');
+import { ConnectionPool } from 'mssql';
 
 const config = {
-    user: 'your_username',
-    password: 'your_password',
-    server: 'your_server_name',
-    database: 'your_database_name',
+    user: 'Noxtra',
+    password: 'Cyromancer33',
+    server: 'hepsiburada.database.windows.net',
+    database: 'HepsiburadaDatabase',
     options: {
         encrypt: true, // For Azure
-        trustServerCertificate: true // For Azure
     }
 };
 
-const pool = new sql.ConnectionPool(config);
+const pool = new ConnectionPool(config);
+console.log(pool);
 
 async function connectToDatabase() {
     try {
@@ -34,7 +34,26 @@ async function executeQuery(query) {
     }
 }
 
-module.exports = {
+
+async function getItemsFromDatabase() {
+    try {
+        const records = await databaseModel.executeQuery('SELECT * FROM products');
+        return records.map(record => ({
+            imageUrl: record.image || 'default_image_url.jpg', // Use a default image URL if image is null
+            brand: record.brand || 'Unknown Brand', // Use a default brand if brand is null
+            description: record.description || 'No description available',
+            rating: record.rating || 0, // Use a default rating of 0 if rating is null
+            countOfRatings: record.countOfRatings || 0, // Use a default count of ratings of 0 if countOfRatings is null
+            price: record.price || 'N/A' // Use 'N/A' if price is null
+        }));
+    } catch (err) {
+        console.error('Error fetching items from database:', err);
+        throw err;
+    }
+}
+
+export default {
     connectToDatabase,
-    executeQuery
+    executeQuery,
+    getItemsFromDatabase
 };

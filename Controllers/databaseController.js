@@ -1,15 +1,15 @@
 // controllers/databaseController.js
-const databaseModel = require('../Models/databaseModel');
+import databaseModel from '../Models/databaseModel';
 
-async function getAllRecords(req, res) {
+export async function getAllItems(req, res) {
     try {
-        const records = await databaseModel.executeQuery('SELECT * FROM your_table');
-        res.json(records);
+        const items = await databaseModel.getItemsFromDatabase();
+        res.json(items);
     } catch (err) {
-        res.status(500).json({ error: 'Error fetching records from database' });
+        res.status(500).json({ error: 'Error fetching items from database' });
     }
 }
 
-module.exports = {
-    getAllRecords
+export default {
+    getAllItems
 };

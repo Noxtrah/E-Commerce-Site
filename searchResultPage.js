@@ -3,24 +3,43 @@ document.addEventListener("DOMContentLoaded", function() {
     const filterInput = document.getElementById('filterInput');
 
     // Sample data
-    const items = [
-        { 
-            imageUrl: 'https://productimages.hepsiburada.net/s/314/222-222/110000307328467.jpg/format:webp',
-            brand: 'Nespresso',
-            description: 'Item 1 Description',
-            rating: 5,
-            countOfRatings: 100,
-            price: '4.559,00 TL'
-        },
-        { 
-            imageUrl: 'url_for_item_2.jpg',
-            description: 'Item 2 Description',
-            rating: 4,
-            countOfRatings: 80,
-            price: '$40'
-        },
-        // Add more items here...
-    ];
+    // const items = [
+    //     { 
+    //         imageUrl: 'https://productimages.hepsiburada.net/s/314/222-222/110000307328467.jpg/format:webp',
+    //         brand: 'Nespresso',
+    //         description: 'Item 1 Description',
+    //         rating: 5,
+    //         countOfRatings: 100,
+    //         price: '4.559,00 TL'
+    //     },
+    //     { 
+    //         imageUrl: 'url_for_item_2.jpg',
+    //         description: 'Item 2 Description',
+    //         rating: 4,
+    //         countOfRatings: 80,
+    //         price: '$40'
+    //     },
+    //     // Add more items here...
+    // ];
+
+    function fetchDataAndCreateGrid() {
+        fetch('/api/items')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(items => {
+                createGridItems(items);
+            })
+            .catch(error => {
+                console.error('Error fetching items:', error);
+            });
+    }
+
+    // Initial grid creation
+    fetchDataAndCreateGrid();
 
     function createGridItems(items) {
         gridContainer.innerHTML = '';
@@ -79,9 +98,6 @@ document.addEventListener("DOMContentLoaded", function() {
             gridContainer.appendChild(gridItem);
         });
     }
-
-    // Initial grid creation
-    createGridItems(items);
 
     // Filter items based on input value
     filterInput.addEventListener('input', function() {

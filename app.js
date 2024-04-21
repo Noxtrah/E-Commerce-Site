@@ -1,19 +1,19 @@
 // app.js
-const express = require('express');
-const databaseRoutes = require('./Routes/databaseRoutes');
-const databaseModel = require('./Models/databaseModel');
+import express, { json } from 'express';
+import databaseRoutes from './Routes/databaseRoutes';
+import databaseModel from './Models/databaseModel';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5500;
 
 // Connect to the database
 databaseModel.connectToDatabase();
 
 // Middleware
-app.use(express.json());
+app.use(json());
 
 // Routes
-app.use('/api/database', databaseRoutes);
+app.use('/api', databaseRoutes);
 
 // Start the server
 app.listen(PORT, () => {
