@@ -51,6 +51,7 @@ body, html {
     color: #484848;
     font-size: 12px;
     font-weight: 100;
+    cursor: pointer;
 }
 
 .grid-container {

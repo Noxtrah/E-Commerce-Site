@@ -100,6 +100,8 @@ function searchBarSuggestions(){
             // Perform action when li element is clicked
             searchInput.value = tag; // Set the value of the input to the clicked tag
             // Optionally, you can submit a form or trigger a search function here
+
+            window.location.href = "searchResultPage.html?searchInputValue=" + encodeURIComponent(searchInput.value);
         });
 
         searchBoxFirstLabel.appendChild(li);

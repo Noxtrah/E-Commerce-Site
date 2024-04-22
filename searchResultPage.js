@@ -21,9 +21,12 @@ document.addEventListener("DOMContentLoaded", function() {
     //     },
     //     // Add more items here...
     // ];
-
+    var searchInputValue = decodeURIComponent(window.location.search.split('=')[1]);
+    
+    console.log(searchInputValue);
     function fetchDataAndCreateGrid() {
-        fetch('/api/items')
+        // var searchInputValue = decodeURIComponent(window.location.search.split('=')[1]);
+        fetch('/api/items?category=' + encodeURIComponent(searchInputValue)) //Veritabanına category ekle
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -106,3 +109,65 @@ document.addEventListener("DOMContentLoaded", function() {
         createGridItems(filteredItems);
     });
 });
+
+function setupCategoryClickHandler() {
+    // Get all category elements
+    var categories = document.querySelectorAll('.categories');
+
+    // Add click event listener to each category
+    categories.forEach(function(category) {
+        category.addEventListener('click', function() {
+            // Update searchInputValue with the clicked category text
+            searchInputValue = category.textContent.trim();
+
+            // Optionally, you can perform any other actions here
+            
+            // Log the updated searchInputValue to console (you can replace this with any other action)
+            console.log("Search Input Value: ", searchInputValue);
+            
+            // Here you can do any further actions, like redirecting to another page or making a fetch request
+            // Example: window.location.href = "another_page.html?searchInputValue=" + encodeURIComponent(searchInputValue);
+        });
+    });
+}
+
+setupCategoryClickHandler();
+
+
+//TRY THE CODE BELOW!!!
+// var state = {
+//     searchInputValue: "",
+//     fetchDataAndCreateGrid: function() {
+//         fetch('/api/items?category=' + encodeURIComponent(this.searchInputValue))
+//             .then(response => {
+//                 if (!response.ok) {
+//                     throw new Error('Network response was not ok');
+//                 }
+//                 return response.json();
+//             })
+//             .then(items => {
+//                 createGridItems(items);
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching items:', error);
+//             });
+//     },
+//     updateSearchInputValue: function(value) {
+//         this.searchInputValue = value;
+//         // Optionally, you can call fetchDataAndCreateGrid() here to automatically fetch data when the search input value is updated
+//     }
+// };
+
+// function setupCategoryClickHandler() {
+//     var categories = document.querySelectorAll('.categories');
+//     categories.forEach(function(category) {
+//         category.addEventListener('click', function() {
+//             var searchInputValue = category.textContent.trim();
+//             state.updateSearchInputValue(searchInputValue);
+//             state.fetchDataAndCreateGrid();
+//         });
+//     });
+// }
+
+// setupCategoryClickHandler();
+
