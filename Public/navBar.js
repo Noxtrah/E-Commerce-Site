@@ -40,8 +40,8 @@ function createSearchBox(){
     const searchbarContainer = document.querySelector('.searchbar-container');
     searchbarContainer.appendChild(searchBox);
 
-    const searchInput = document.querySelector('.search-input');
-    searchInput.addEventListener('input', searchBarSuggestions);
+    const category = document.querySelector('.search-input');
+    category.addEventListener('input', searchBarSuggestions);
 }
 
 function removeSearchBox() {
@@ -70,8 +70,8 @@ function toggleSearchBox() {
 }
 
 function searchBarSuggestions(){
-    const searchInput = document.querySelector('.search-input');
-    const inputValue = searchInput.value.trim().toLowerCase();
+    const category = document.querySelector('.search-input');
+    const inputValue = category.value.trim().toLowerCase();
     const searchBoxFirstLabel = document.querySelector('.search-box-first-label');
 
     // Check if the length of the input value is less than 2
@@ -98,10 +98,10 @@ function searchBarSuggestions(){
         // Add click event listener to each li element
         li.addEventListener('click', function() {
             // Perform action when li element is clicked
-            searchInput.value = tag; // Set the value of the input to the clicked tag
+            category.value = tag; // Set the value of the input to the clicked tag
             // Optionally, you can submit a form or trigger a search function here
 
-            window.location.href = "searchResultPage.html?searchInputValue=" + encodeURIComponent(searchInput.value);
+            window.location.href = "searchResultPage.html?category=" + encodeURIComponent(category.value);
         });
 
         searchBoxFirstLabel.appendChild(li);

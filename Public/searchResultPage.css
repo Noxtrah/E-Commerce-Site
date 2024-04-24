@@ -84,46 +84,75 @@ body, html {
     padding: 8px;
     position: relative;
 }
-
 .item-brand{
-    display: inline-flex;
+    display: inline;
     color: #484848;
     font-size: 12px;
     font-weight: 600;
     overflow: hidden;
 }
 
-.item-description{
-    display: inline-flex;
-    color: rgb(123, 123, 123);
+.item-product-name{
+    display: inline;
+    color: rgb(123, 123, 123);;
     font-size: 12px;
     font-weight: 600;
-    margin-left: 5px;
     overflow: hidden;
+    margin-left: 4px;
 }
 
 .rating-container{
     display: flex;
     flex-direction: row;
-    margin-top: -12px;
+    /* margin-top: -12px; */
 }
 
 .item-rating{
-    margin-top: 7px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+    margin-top: 4px;
     /* fill: rgb(246, 159, 41); */
 }
 
-.item-rating .star {
+/* .item-rating .star {
+    font-size: 20px;
     color: rgb(246, 159, 41);
+} */
+
+/* Full Star */
+.fas.fa-star {
+    color: rgb(246, 159, 41); /* Color for full stars */
+    font-size: 12px;
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+}
+
+/* Half Star */
+.fas.fa-star-half-alt {
+    color: rgb(246, 159, 41); /* Color for half stars */
+    font-size: 12px;
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+}
+
+/* Empty Star */
+.far.fa-star {
+    color: #ccc; /* Color for empty stars */
+    font-size: 12px;
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+}
+
+/* Rating container styles */
+.rating-container {
+    display: inline-block;
+    font-size: 20px; /* Adjust as needed */
+    line-height: 1;
+    margin-top: 5px;
 }
 
 .item-count-of-ratings{
     align-items: center;
     color: rgb(145, 145, 145);
-    display: flex;
+    display: inline;
     font-family: Inter, -apple-system, BlinkMacSystemFont, Arial, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 11px;
     font-stretch: normal;
@@ -134,7 +163,7 @@ body, html {
 }
 
 .item-price{
-    margin-top: 0px;
+    margin-top: 10px;
     color: rgb(72, 72, 72);
     font-size: 14px;
     font-weight: 700;

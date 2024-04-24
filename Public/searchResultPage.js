@@ -21,12 +21,11 @@ document.addEventListener("DOMContentLoaded", function() {
     //     },
     //     // Add more items here...
     // ];
-    var searchInputValue = decodeURIComponent(window.location.search.split('=')[1]);
+    var category = decodeURIComponent(window.location.search.split('=')[1]);
+    console.log(category);
     
-    console.log(searchInputValue);
     function fetchDataAndCreateGrid() {
-        // var searchInputValue = decodeURIComponent(window.location.search.split('=')[1]);
-        fetch('/api/items?category=' + encodeURIComponent(searchInputValue)) //Veritabanına category ekle
+        fetch(`/api/items?category=${encodeURIComponent(category)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error('Error fetching items:', error);
             });
     }
-
+    
     // Initial grid creation
     fetchDataAndCreateGrid();
 
@@ -60,30 +59,59 @@ document.addEventListener("DOMContentLoaded", function() {
             infoContainer.classList.add('info-container');
             gridItem.appendChild(infoContainer);
 
+            //HeaderContainer
+            const headerContainer = document.createElement('div');
+            headerContainer.classList.add('header-container');
+
             //Brand
             const brand = document.createElement('span');
             brand.classList.add('item-brand');
             brand.textContent = item.brand;
-            infoContainer.appendChild(brand);
+            headerContainer.appendChild(brand);
 
-            // Description
-            const description = document.createElement('p');
-            description.classList.add('item-description');
-            description.textContent = item.description;
-            infoContainer.appendChild(description);
+            //Product Name
+            const productName = document.createElement('span');
+            productName.classList.add('item-product-name');
+            productName.textContent = item.productName;
+            headerContainer.appendChild(productName);
+
+            infoContainer.appendChild(headerContainer);
 
             // Rating
             const ratingContainer = document.createElement('div');
             ratingContainer.classList.add('rating-container');
-            const rating = document.createElement('div');
-            rating.classList.add('item-rating');
-            for (let i = 0; i < item.rating; i++) {
-                const star = document.createElement('span');
-                star.classList.add('star');
-                star.textContent = '★';
-                rating.appendChild(star);
+
+            // Calculate the number of full stars (integer part of the rating)
+            const fullStars = Math.min(Math.floor(item.rating), 5);
+
+            // Check if there is a half star
+            const hasHalfStar = item.rating % 1 >= 0.5;
+
+            // Create full stars
+            for (let i = 0; i < fullStars; i++) {
+                const star = document.createElement('i');
+                star.classList.add('fas', 'fa-star');
+                ratingContainer.appendChild(star);
             }
-            ratingContainer.appendChild(rating);
+
+            // Create half star if applicable
+            if (hasHalfStar) {
+                const halfStar = document.createElement('i');
+                halfStar.classList.add('fas', 'fa-star-half-alt');
+                ratingContainer.appendChild(halfStar);
+            }
+
+            // Create empty stars for the remaining slots
+            const remainingStars = 5 - (fullStars + (hasHalfStar ? 1 : 0)); // Calculate the remaining slots
+            for (let i = 0; i < remainingStars; i++) {
+                const star = document.createElement('i');
+                star.classList.add('far', 'fa-star');
+                ratingContainer.appendChild(star);
+            }
+
+            // Append the rating container to its parent element
+            infoContainer.appendChild(ratingContainer);
+
 
             // Count of Ratings
             const countOfRatings = document.createElement('p');
@@ -95,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Price
             const price = document.createElement('p');
             price.classList.add('item-price');
-            price.textContent = item.price;
+            price.textContent = `${item.price} TL`;
             infoContainer.appendChild(price);
 
             gridContainer.appendChild(gridItem);
@@ -118,12 +146,12 @@ function setupCategoryClickHandler() {
     categories.forEach(function(category) {
         category.addEventListener('click', function() {
             // Update searchInputValue with the clicked category text
-            searchInputValue = category.textContent.trim();
+            category = category.textContent.trim();
 
             // Optionally, you can perform any other actions here
             
             // Log the updated searchInputValue to console (you can replace this with any other action)
-            console.log("Search Input Value: ", searchInputValue);
+            console.log("Search Input Value: ", category);
             
             // Here you can do any further actions, like redirecting to another page or making a fetch request
             // Example: window.location.href = "another_page.html?searchInputValue=" + encodeURIComponent(searchInputValue);
