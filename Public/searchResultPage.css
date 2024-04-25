@@ -13,11 +13,11 @@ body, html {
 }
 
 .filter {
-    position: sticky;
+    position: absolute;
     margin-right: 24px;
-    width: 200px;
+    margin-left: -60vw;
     color: #484848;
-    width: 200px;
+    min-width: 200px;
     overflow: auto;
     overflow-x: hidden;
     border: 1px solid #e5e5e5;
@@ -57,6 +57,7 @@ body, html {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin-right: -8vw;
     gap: 30px;
 }
 

@@ -61,6 +61,7 @@ export async function getItemsFromDatabase(category) {
         // Modify the SQL query to include a WHERE clause filtering by the selected category
         const records = await executeQuery(`SELECT * FROM products WHERE category ='${category}'`);
         return records.map(record => ({
+            productNo: record.productNo || 'Unknown Product No',
             imageUrl: record.image || 'default_image_url.jpg',
             brand: record.brand || 'Unknown Brand',
             productName: record.productName || 'Unknown Product',
@@ -77,6 +78,23 @@ export async function getItemsFromDatabase(category) {
     }
 }
 
+export async function getSelectedItemFromDatabase(productNo) {
+    try {
+        const record = await executeQuery(`SELECT * FROM products WHERE productNo = '${productNo}'`);
+        return record.map(record => ({
+            brand: record.brand || 'Unknown Brand',
+            productName: record.productName || 'Unknown Product',
+            imageUrl: record.image || 'default_image_url.jpg',
+            description: record.description || 'Unknown description',
+            rating: record.rating || 'Unknown rating',
+            countOfRatings: record.countOfRatings || 'Unknown count of ratings',
+            price: record.price || 'Unknown price'
+        })); 
+    } catch(err){
+        console.error('Error fetching selected item from database:', err);
+        throw err;
+    }
+}
 
 
 export default {
@@ -84,5 +102,6 @@ export default {
     executeQuery,
     executeParameterizedQuery,
     getItemsFromDatabase,
+    getSelectedItemFromDatabase
   };
   

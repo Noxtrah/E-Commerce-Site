@@ -1,30 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.getElementById('gridContainer');
     const filterInput = document.getElementById('filterInput');
-
-    // Sample data
-    // const items = [
-    //     { 
-    //         imageUrl: 'https://productimages.hepsiburada.net/s/314/222-222/110000307328467.jpg/format:webp',
-    //         brand: 'Nespresso',
-    //         description: 'Item 1 Description',
-    //         rating: 5,
-    //         countOfRatings: 100,
-    //         price: '4.559,00 TL'
-    //     },
-    //     { 
-    //         imageUrl: 'url_for_item_2.jpg',
-    //         description: 'Item 2 Description',
-    //         rating: 4,
-    //         countOfRatings: 80,
-    //         price: '$40'
-    //     },
-    //     // Add more items here...
-    // ];
     var category = decodeURIComponent(window.location.search.split('=')[1]);
-    console.log(category);
+    setupCategoryClickHandler(category);
+
+});
     
-    function fetchDataAndCreateGrid() {
+    function fetchDataAndCreateGrid(category) {
         fetch(`/api/items?category=${encodeURIComponent(category)}`)
             .then(response => {
                 if (!response.ok) {
@@ -126,76 +108,35 @@ document.addEventListener("DOMContentLoaded", function() {
             price.textContent = `${item.price} TL`;
             infoContainer.appendChild(price);
 
+            gridItem.addEventListener('click', function() {
+                // Redirect to a new HTML page and pass the item ID as a query parameter
+                window.location.href = `productDetailPage.html?productNo=${item.productNo}`;
+            });
+
             gridContainer.appendChild(gridItem);
         });
     }
 
-    // Filter items based on input value
-    filterInput.addEventListener('input', function() {
-        const filterValue = filterInput.value.toLowerCase();
-        const filteredItems = items.filter(item => item.description.toLowerCase().includes(filterValue));
-        createGridItems(filteredItems);
-    });
-});
-
-function setupCategoryClickHandler() {
+function setupCategoryClickHandler(category) {
     // Get all category elements
     var categories = document.querySelectorAll('.categories');
 
     // Add click event listener to each category
-    categories.forEach(function(category) {
-        category.addEventListener('click', function() {
+    categories.forEach(function(cat) {
+        cat.addEventListener('click', function() {
+            console.log(category);
+            console.log(categories);
             // Update searchInputValue with the clicked category text
-            category = category.textContent.trim();
+            category = cat.textContent.trim();
 
             // Optionally, you can perform any other actions here
             
             // Log the updated searchInputValue to console (you can replace this with any other action)
             console.log("Search Input Value: ", category);
-            
+            fetchDataAndCreateGrid(category);
+
             // Here you can do any further actions, like redirecting to another page or making a fetch request
             // Example: window.location.href = "another_page.html?searchInputValue=" + encodeURIComponent(searchInputValue);
         });
     });
 }
-
-setupCategoryClickHandler();
-
-
-//TRY THE CODE BELOW!!!
-// var state = {
-//     searchInputValue: "",
-//     fetchDataAndCreateGrid: function() {
-//         fetch('/api/items?category=' + encodeURIComponent(this.searchInputValue))
-//             .then(response => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then(items => {
-//                 createGridItems(items);
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching items:', error);
-//             });
-//     },
-//     updateSearchInputValue: function(value) {
-//         this.searchInputValue = value;
-//         // Optionally, you can call fetchDataAndCreateGrid() here to automatically fetch data when the search input value is updated
-//     }
-// };
-
-// function setupCategoryClickHandler() {
-//     var categories = document.querySelectorAll('.categories');
-//     categories.forEach(function(category) {
-//         category.addEventListener('click', function() {
-//             var searchInputValue = category.textContent.trim();
-//             state.updateSearchInputValue(searchInputValue);
-//             state.fetchDataAndCreateGrid();
-//         });
-//     });
-// }
-
-// setupCategoryClickHandler();
-
