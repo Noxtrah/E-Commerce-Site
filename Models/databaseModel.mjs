@@ -42,6 +42,7 @@ export async function executeQuery(query) {
 
 export async function executeParameterizedQuery(query, parameters) {
     try {
+        console.log('Executing parameterized query:', query, parameters);
         const request = pool.request();
         for (const key in parameters) {
             if (parameters.hasOwnProperty(key)) {
@@ -99,12 +100,47 @@ export async function getSelectedItemFromDatabase(productNo) {
     }
 }
 
+export async function getItemsByCategoryAndLocation(category, location) {
+    try {
+        console.log('Fetching items by category and location:', category, location);
+        
+        // Modify the SQL query to include a WHERE clause filtering by both category and location
+        const query = `
+            SELECT * 
+            FROM products 
+            WHERE category ='${category}' 
+            AND location ='${location}'
+        `;
+        
+        const items = await executeQuery(query);
+
+        console.log('Items fetched:', items);
+        
+        return items.map(item => ({
+            productNo: item.productNo || 'Unknown Product No',
+            imageUrl: item.image || 'default_image_url.jpg',
+            brand: item.brand || 'Unknown Brand',
+            productName: item.productName || 'Unknown Product',
+            description: item.description || 'No description available',
+            rating: item.rate || 0,
+            countOfRatings: item.countOfRates || 0,
+            price: item.price || 'N/A',
+            category: item.category || 'Unknown Category',
+            location: item.location || 'Unknown Location'
+        }));
+    } catch (error) {
+        console.error('Error fetching items by category and location:', error);
+        throw error;
+    }
+}
+
 
 export default {
     connectToDatabase,
     executeQuery,
     executeParameterizedQuery,
     getItemsFromDatabase,
-    getSelectedItemFromDatabase
+    getSelectedItemFromDatabase,
+    getItemsByCategoryAndLocation
   };
   

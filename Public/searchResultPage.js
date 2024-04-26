@@ -4,8 +4,33 @@ document.addEventListener("DOMContentLoaded", function() {
     var category = decodeURIComponent(window.location.search.split('=')[1]);
     fetchDataAndCreateGrid(category);
     setupCategoryClickHandler(category);
-
 });
+
+var category = decodeURIComponent(window.location.search.split('=')[1]);
+const tomorrowDeliveryCheckbox = document.getElementById('tomorrow-delivery-checkbox');
+tomorrowDeliveryCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        // Fetch items filtered by location
+        const location = sessionStorage.getItem('selectedCity');
+        fetchAndFilterItemsByLocation(category, location);
+    } else {
+        // Fetch all items
+        fetchDataAndCreateGrid(category);
+    }
+});
+
+    async function fetchAndFilterItemsByLocation(category, location) {
+        try {
+            const response = await fetch(`/api/itemsByLocation?category=${encodeURIComponent(category)}&location=${encodeURIComponent(location)}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const items = await response.json();
+            createGridItems(items);
+        } catch (error) {
+            console.error('Error fetching items by location:', error);
+        }
+    }
 
     async function fetchDataAndCreateGrid(category) {
         fetch(`/api/items?category=${encodeURIComponent(category)}`)

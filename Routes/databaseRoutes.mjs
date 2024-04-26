@@ -1,6 +1,6 @@
 // Importing modules using ES6 syntax
 import { Router } from 'express';
-import { getAllItems, getOneItemByNo } from '../Controllers/databaseController.mjs';
+import { getAllItems, getOneItemByNo, fetchItemsByCategoryAndLocation } from '../Controllers/databaseController.mjs';
 import { connectToDatabase } from '../Models/databaseModel.mjs';
 
 const router = Router();
@@ -15,6 +15,7 @@ connectToDatabase()
 
 router.get('/items', getAllItems);
 router.get('/item', getOneItemByNo);
+router.get('/itemsByLocation', fetchItemsByCategoryAndLocation);
 
 
 export default router;
