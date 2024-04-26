@@ -5,17 +5,21 @@ body, html {
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 30px;
+    display: grid;
+    grid-template-columns: minmax(200px, auto) 1fr; /* Adjust as needed */
+    gap: 30px;
+    padding-inline: 320px;
+    padding-top: 30px;
+    grid-template-areas: "filter delivery-filters"
+                         "filter grid-container"; /* Define the layout */
+
 }
 
 .filter {
-    position: absolute;
+    grid-area: filter; /* Place the filter in its defined area */
+    position: relative;
     margin-right: 24px;
-    margin-left: -60vw;
+    /* margin-left: -60vw; */
     color: #484848;
     min-width: 200px;
     overflow: auto;
@@ -54,7 +58,161 @@ body, html {
     cursor: pointer;
 }
 
+.delivery-filters {
+    display: grid;
+    grid-template-areas: 
+        "header header location separator tomorrow"
+        "info info location separator tomorrow";
+    grid-template-columns: auto auto 1fr auto; /* Adjust column widths */
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    height: 55px;
+}
+
+.delivery-filter-header {
+    grid-area: header;
+    width: 600px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -.32p;
+    color: #484848;
+    font-weight: 700;
+}
+
+.delivery-filter-info {
+    grid-area: info;
+    width: 600px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .4px;
+    color: #9b9b9b;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.seperator {
+    grid-area: separator;
+    width: 1px; /* Width of the vertical line */
+    height: auto;
+    background-color: #ccc; /* Color of the vertical line */
+    margin-right: 20px;
+}
+
+.current-location {
+    grid-area: location;
+    justify-self: flex-end;
+    margin-left: auto; /* Push to the far right */
+    min-width: 20px;
+    max-width: 120px;
+    margin-right: 20px;
+}
+
+.current-location-icon{
+    margin-top: -20px;
+}
+
+.current-location-info{
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: 30px;
+    margin-top: 3px;
+    letter-spacing: .4px;
+    color: #ff6000;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tomorrow-delivery {
+    grid-area: tomorrow;
+}
+
+.delivery-filter-header,
+.delivery-filter-info,
+.current-location,
+.seperator,
+.tomorrow-delivery {
+    margin-bottom: 10px; /* Adjust margin between items */
+}
+
+.current-location,
+.tomorrow-delivery {
+    display: flex;
+    align-items: center;
+}
+
+.current-location {
+    padding: 12px;
+    background-color: #ffefe5;
+    border-radius: 8px;
+    display: flex;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .4px;
+    color: #ff6000;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tomorrow-delivery{
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    align-items: center;
+    position: relative;
+    padding: 8px;
+}
+
+.tomorrow-delivery input[type="checkbox"] {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 8px;
+    appearance: none;
+    outline: 0;
+    cursor: pointer;
+    transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+  }
+  
+  .tomorrow-delivery input[type="checkbox"]::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 2px;
+    left: 7px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(40deg);
+    opacity: 0;
+  }
+  
+  .tomorrow-delivery input[type="checkbox"]:checked {
+    color: white;
+    border-color: #ff6000;
+    background: #ff6000;
+  }
+  
+  .tomorrow-delivery input[type="checkbox"]:checked::before {
+    opacity: 1;
+  }
+
+  .tomorrow-delivery-span{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .4px;
+    color: #666;
+    margin-left: 8px;
+  }
+
 .grid-container {
+    grid-area: grid-container;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-right: -8vw;

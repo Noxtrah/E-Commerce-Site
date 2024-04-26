@@ -177,6 +177,8 @@ async function createLocationDropdown() {
                 const selectedCity = cityDropdown.options[cityDropdown.selectedIndex].text;
                 const selectedTown = townDropdown.options[townDropdown.selectedIndex].text;
                 locationSelector.textContent = `${selectedCity}, ${selectedTown}`;
+                const locationInfo = document.querySelector('.current-location-info');
+                locationInfo.textContent = `${selectedCity}`;
             });
 
             // Fetch Turkey's cities and towns from an API
