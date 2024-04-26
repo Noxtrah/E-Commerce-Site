@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.getElementById('gridContainer');
     const filterInput = document.getElementById('filterInput');
     var category = decodeURIComponent(window.location.search.split('=')[1]);
+    fetchDataAndCreateGrid(category);
     setupCategoryClickHandler(category);
 
 });
@@ -21,9 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error('Error fetching items:', error);
             });
     }
-    
-    // Initial grid creation
-    fetchDataAndCreateGrid();
 
     function createGridItems(items) {
         gridContainer.innerHTML = '';
