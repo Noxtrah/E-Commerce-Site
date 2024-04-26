@@ -14,18 +14,20 @@ const config = {
 };
 
 const pool = new ConnectionPool(config);
-console.log(pool);
 
-// Function to connect to the database
-export async function connectToDatabase() {
-    try {
-        await pool.connect();
-        console.log('Connected to MSSQL database');
-    } catch (err) {
-        console.error('Error connecting to MSSQL database:', err);
-    }
+export function connectToDatabase() {
+    return new Promise((resolve, reject) => {
+        pool.connect(err => {
+            if (err) {
+                console.error('Error connecting to MSSQL database:', err);
+                reject(err); // Reject the promise if connection fails
+            } else {
+                console.log('Connected to MSSQL database');
+                resolve(); // Resolve the promise if connection succeeds
+            }
+        });
+    });
 }
-
 // Function to execute a query
 export async function executeQuery(query) {
     try {
@@ -85,9 +87,10 @@ export async function getSelectedItemFromDatabase(productNo) {
             brand: record.brand || 'Unknown Brand',
             productName: record.productName || 'Unknown Product',
             imageUrl: record.image || 'default_image_url.jpg',
+            bigImageUrl: record.bigImage || 'default_big_image_url.jpg',
             description: record.description || 'Unknown description',
-            rating: record.rating || 'Unknown rating',
-            countOfRatings: record.countOfRatings || 'Unknown count of ratings',
+            rating: record.rate || 'Unknown rating',
+            countOfRatings: record.countOfRates || 'Unknown count of ratings',
             price: record.price || 'Unknown price'
         })); 
     } catch(err){

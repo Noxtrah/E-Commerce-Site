@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     setupCategoryClickHandler(category);
 
 });
-    
-    function fetchDataAndCreateGrid(category) {
+
+    async function fetchDataAndCreateGrid(category) {
         fetch(`/api/items?category=${encodeURIComponent(category)}`)
             .then(response => {
                 if (!response.ok) {
