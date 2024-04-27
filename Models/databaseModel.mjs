@@ -10,6 +10,8 @@ const config = {
     database: 'HepsiburadaDatabase',
     options: {
         encrypt: true, // For Azure
+        connectionTimeout: 60000, // 30 seconds timeout
+        requestTimeout: 60000, // 30 seconds timeout
     }
 };
 

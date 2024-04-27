@@ -8,16 +8,66 @@ document.addEventListener("DOMContentLoaded", function() {
 
 var category = decodeURIComponent(window.location.search.split('=')[1]);
 const tomorrowDeliveryCheckbox = document.getElementById('tomorrow-delivery-checkbox');
+let isChecked = false;
+const saveButtons = document.querySelectorAll('.save-button');
+
 tomorrowDeliveryCheckbox.addEventListener('change', function() {
     if (this.checked) {
+        isChecked = true;
+    } else {
+        isChecked = false;
+    }
+    console.log(isChecked);
+
+    if (isChecked == true) {
+        console.log("if'e girdi");
+        const location = sessionStorage.getItem('selectedCity');
+        fetchAndFilterItemsByLocation(category, location);
+    }
+    // else if (isChecked == true && saveButton.isClicked){
+    //     console.log("else if'e girdi");
+    //     const location = sessionStorage.getItem('selectedCity');
+    //     fetchAndFilterItemsByLocation(category, location);
+    // }
+    else {
+        console.log("else'e girdi");
+        fetchDataAndCreateGrid(category);
+    }
+
+});
+
+
+    window.addEventListener('saveButtonClicked', function(){
+        if (isChecked == true){
+            console.log("else if'e girdi");
+            console.log("butrtons: " , isChecked);
+            const location = sessionStorage.getItem('selectedCity');
+            fetchAndFilterItemsByLocation(category, location);
+        }
+    });
+
+
+/*
+var category = decodeURIComponent(window.location.search.split('=')[1]);
+const tomorrowDeliveryCheckbox = document.getElementById('tomorrow-delivery-checkbox');
+let saveButtonClicked = false; // Initialize a flag to track if the save button is clicked
+
+// Event listener for the save button click
+document.querySelectorAll('.save-button').forEach(button => {
+    button.addEventListener('click', function() {
+        saveButtonClicked = true; // Set the flag to true when the save button is clicked
+    });
+});
+
+// Event listener for the checkbox change
+tomorrowDeliveryCheckbox.addEventListener('change', function() {
+    if (this.checked && saveButtonClicked) { // Check if checkbox is checked and save button is clicked
         // Fetch items filtered by location
         const location = sessionStorage.getItem('selectedCity');
         fetchAndFilterItemsByLocation(category, location);
-    } else {
-        // Fetch all items
-        fetchDataAndCreateGrid(category);
+        saveButtonClicked = false; // Reset the flag when the save button is clicked
     }
-});
+});*/
 
     async function fetchAndFilterItemsByLocation(category, location) {
         try {

@@ -180,6 +180,8 @@ async function createLocationDropdown() {
                 const locationInfo = document.querySelector('.current-location-info');
                 locationInfo.textContent = `${selectedCity}`;
                 sessionStorage.setItem('selectedCity', selectedCity);
+                const event = new CustomEvent('saveButtonClicked');
+                window.dispatchEvent(event);
             });
 
             // Fetch Turkey's cities and towns from an API
