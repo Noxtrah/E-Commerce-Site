@@ -4,6 +4,9 @@ hepsiburadawebappbykayra.azurewebsites.net
 GitHub link:
 https://github.com/Noxtrah/E-Commerce-Site.git
 
+Video link:
+https://drive.google.com/file/d/1g3RO40IRwrLhEO-C9XCJCPeSPI-v4VFm/view?usp=sharing
+
 IMPORTANT:
 -After the page loads the nav-bar(logo, search bar and location selector) load a little later than the page. The reason is the same nav-bar is used in 3 different pages. So I
 made a special .html file just for nav-bar and fetch it to other 3 pages(mainPage, searchedItemsPage and itemDetailPage).
