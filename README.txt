@@ -12,6 +12,7 @@ IMPORTANT:
 made a special .html file just for nav-bar and fetch it to other 3 pages(mainPage, searchedItemsPage and itemDetailPage).
 -Sometimes the .css and .js of the nav-bar loads later than the .html. So the visual may seem primitive. Waiting a little longer or refreshing the page solves the problem.
 Because the free app service of Azure starts very slowly at first (works completely fine in local, this is why I am sure the problem is in free app service).
+-Database works slow on the start because of cool-start. After first fetch it gets faster. Refreshing the page will solve the problem if the data doesn't come.
 
 Notes:
 1-) Search bar only searches by tag. (i.e. Elektronik, Moda, etc.)
